@@ -4,10 +4,9 @@ services:
   app:
     build:
       context: . # Use the current directory as the build context
-      dockerfile: Dockerfile # Specify the Dockerfile for the build
+      dockerfile: Dockerfile # Specify the Dockerfile
+    image: wakeonlan_app:latest # Explicitly name the image
     ports:
       - "3000:3000" # Map container port 3000 to host port 3000
     environment:
-      NODE_ENV: production # Set the environment to production
-    volumes:
-      - ./public:/app/public # Mount only necessary directories for development
+      NODE_ENV: production
