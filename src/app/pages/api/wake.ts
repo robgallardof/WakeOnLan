@@ -15,7 +15,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
       return;
     }
 
-    // Validar el formato de la dirección MAC
     const isValidMacAddress = (address: string) => {
       const macRegex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/;
       return macRegex.test(address);
@@ -26,8 +25,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
       return;
     }
 
-    // Enviar el paquete WoL
-    wol.wake(macAddress, { address: '192.168.1.255', port: 9 }, (err) => {
+    wol.wake(macAddress, { address: '192.168.3.255', port: 9 }, (err) => {
       if (err) {
         res.status(500).json({ success: false, message: 'Failed to send WoL packet' });
         return;
