@@ -3,12 +3,11 @@ version: '3.8'
 services:
   app:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: . # Use the current directory as the build context
+      dockerfile: Dockerfile # Specify the Dockerfile for the build
     ports:
-      - "3000:3000" # Maps container port 3000 to host port 3000
+      - "3000:3000" # Map container port 3000 to host port 3000
     environment:
-      - NODE_ENV=production # Ensures the application runs in production mode
+      NODE_ENV: production # Set the environment to production
     volumes:
-      - .:/app # Optional: Mount local code for development
-      - /app/node_modules # Ensures node_modules are managed in the container
+      - ./public:/app/public # Mount only necessary directories for development
